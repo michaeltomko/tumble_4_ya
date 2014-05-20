@@ -1,12 +1,4 @@
-class Array
-  def tumble(&block)
-    if block_given?
-      Tumble4Ya.new(self).tumble(&block)
-    else
-      self.shuffle
-    end
-  end
-end
+require 'tumble_4_ya/array'
 
 class Tumble4Ya < Struct.new(:items)
   def tumble(&block)
