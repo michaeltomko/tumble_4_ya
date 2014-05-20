@@ -1,10 +1,16 @@
 class Array
   def roulette_wheel_sort(&block)
-    perform_roulette_wheel_sort(*generate_fitnesses_and_load_roulette_wheel(self, &block))
+    Tumble4Ya.new(self).tumble(&block)
+  end
+end
+
+class Tumble4Ya < Struct.new(:items)
+  def tumble(&block)
+    perform_roulette_wheel_sort(*generate_fitnesses_and_load_roulette_wheel(items, &block))
   end
 
   private
-  def perform_roulette_wheel_sort(items,wheel)
+  def perform_roulette_wheel_sort(items, wheel)
     roulette_wheel_as_generator(wheel).lazy.collect do |fitness|
       item = items[fitness].pop
       wheel.reject!{|f| f == fitness } if items[fitness].empty?
@@ -12,7 +18,7 @@ class Array
     end.take(items.values.map(&:length).sum).to_a
   end
 
-  def generate_fitnesses_and_load_roulette_wheel(items,&block)
+  def generate_fitnesses_and_load_roulette_wheel(items, &block)
     fitnessed_items = generate_fitnesses(items, &block)
     roulette_wheel = load_roulette_wheel(fitnessed_items.keys)
     return fitnessed_items, roulette_wheel
