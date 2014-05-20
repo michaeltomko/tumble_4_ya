@@ -22,7 +22,7 @@ class Tumble4Ya < Struct.new(:items)
 
   def generate_and_group_by_fitnesses(items, &block)
     items.shuffle.each_with_object({}) do |item,results|
-      fitness = calculate_fitness((yield item).join.to_i(2),items.length)
+      fitness = calculate_fitness(((yield item).join.to_i(2) + 1),items.length)
       results[fitness] = (results[fitness].to_a << item)
     end
   end
