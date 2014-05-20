@@ -33,5 +33,16 @@ drinks = ["juice","milk","beer","champagne"]
   ]
 end
 
+# Scoring
+=> juice:     [1,1,0,1]
+   milk:      [0,0,0,1]
+   beer:      [0,0,1,1]
+   champagne: [1,0,1,1]
+
+# Sorted Array
 => ["champagne", "juice", "beer", "milk"]
 ```
+
+While this may not be an extremely valuable use case, the example is used to demonstrate how simple it is to generate descriptive chromosomes for each item in your array by converting boolean operations into binary bits.
+
+When converting a binary number into an integer, the bits are weighted to the left, thus that a bit in the first position will raise the value of the integer higher than those to the right.
