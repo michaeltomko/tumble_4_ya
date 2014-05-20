@@ -1,10 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "tumble_4_ya/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "tumble_4_ya"
-  spec.version       = "0.1.0"
+  spec.version       = Tumble4Ya::VERSION
   spec.authors       = ["Michael Tomko"]
   spec.email         = ["mike@tomkobombco.com"]
   spec.description   = %q{Tumble 4 Ya is a Ruby Gem that extends adds simple roulette wheel sorting to Array objects.}
