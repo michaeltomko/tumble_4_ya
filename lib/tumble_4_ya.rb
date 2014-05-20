@@ -15,12 +15,12 @@ class Tumble4Ya < Struct.new(:items)
   end
 
   def generate_fitnesses_and_load_roulette_wheel(items, &block)
-    fitnessed_items = generate_fitnesses(items, &block)
+    fitnessed_items = generate_and_group_by_fitnesses(items, &block)
     roulette_wheel = load_roulette_wheel(fitnessed_items.keys)
     return fitnessed_items, roulette_wheel
   end
 
-  def generate_fitnesses(items, &block)
+  def generate_and_group_by_fitnesses(items, &block)
     items.shuffle.each_with_object({}) do |item,results|
       fitness = calculate_fitness((yield item).join.to_i(2),items.length)
       results[fitness] = (results[fitness].to_a << item)
