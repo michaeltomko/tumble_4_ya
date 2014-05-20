@@ -22,7 +22,7 @@ And run `bundle install` within your app's directory.
 Simply call `tumble` on any Array and pass your weighted sorting criteria, as an array of bits, into the block.
 
 ```ruby
-alchol = ["beer","champagne"]
+alcohol = ["beer","champagne"]
 drinks = ["juice","milk","beer","champagne"]
 
 ["juice","milk","beer","champagne"].tumble do |drink|
@@ -32,4 +32,6 @@ drinks = ["juice","milk","beer","champagne"]
    1
   ]
 end
+
+=> ["champagne", "juice", "beer", "milk"]
 ```
