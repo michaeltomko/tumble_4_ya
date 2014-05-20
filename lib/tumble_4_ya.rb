@@ -1,6 +1,10 @@
 class Array
-  def roulette_wheel_sort(&block)
-    Tumble4Ya.new(self).tumble(&block)
+  def tumble(&block)
+    if block_given?
+      Tumble4Ya.new(self).tumble(&block)
+    else
+      self.shuffle
+    end
   end
 end
 
