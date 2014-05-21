@@ -1,7 +1,7 @@
 Tumble4Ya
 ===========
 
-A Ruby Gem that extends adds simple roulette wheel style sorting to any Array object.
+A Ruby Gem that adds simple roulette wheel style sorting to any Array object.
 
 ## Requirements
 
