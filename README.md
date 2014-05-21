@@ -3,6 +3,10 @@ Tumble4Ya
 
 A Ruby Gem that adds simple roulette wheel style sorting to any Array object.
 
+> ![Culture Club via Giphy](http://media.giphy.com/media/12ayoOAjHcjUaI/giphy.gif)
+
+> I'll tumble 4 ya.
+
 ## Requirements
 
 Tumble4Ya requires Ruby 2.0+.
