@@ -17,6 +17,14 @@ gem 'tumble_4_ya', :git => "https://github.com/michaeltomko/tumble_4_ya.git", :b
 
 And run `bundle install` within your app's directory.
 
+## Roulette Wheel Sorting
+
+![Image from Newcastle University Engineering Design Center: http://www.edc.ncl.ac.uk/highlight/rhjanuary2007g02.php/](http://www.edc.ncl.ac.uk/assets/hilite_graphics/rhjan07g02.png)
+
+> "Roulette Wheel Selection mimics the way a traditional roulette wheel works by assigning each member of the population to a “slot” on the wheel, but “rigs” the odds by assigning more slots to those more desirable chromosomes."
+
+> - [John Svazic: Growing The Money Tree](http://growingthemoneytree.com/roulette-wheel-selection/)
+
 ## Usage
 
 Simply call `tumble` on any Array and pass your weighted sorting criteria, as an array of bits, into the block.
