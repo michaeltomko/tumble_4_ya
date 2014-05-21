@@ -3,7 +3,7 @@ Tumble4Ya
 
 A Ruby Gem that adds simple roulette wheel style sorting to any Array object.
 
-> ![Culture Club via Giphy](http://media.giphy.com/media/12ayoOAjHcjUaI/giphy.gif)
+> ![Culture Club](http://24.media.tumblr.com/tumblr_mc0t7x0FAc1r3ifxzo1_500.gif)
 
 > I'll tumble 4 ya.
 
@@ -73,3 +73,5 @@ When converting a binary number into an integer, the bits are weighted to the le
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+> ![Culture Club](http://media.giphy.com/media/12ayoOAjHcjUaI/giphy.gif)
