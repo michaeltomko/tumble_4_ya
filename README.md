@@ -27,7 +27,7 @@ And run `bundle install` within your app's directory.
 
 ## Usage
 
-Simply call `tumble` on any Array and pass your weighted sorting criteria, as an array of bits, into the block.
+Simply call `tumble` on any Array and pass your weighted sorting criteria, as an array of bits, into the block. Failing to include a block will cause Tumble4Ya to simply act as an alias for the default `shuffle` method.
 
 ```ruby
 alcohol = ["beer","champagne"]
