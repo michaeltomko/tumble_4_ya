@@ -23,7 +23,7 @@ And run `bundle install` within your app's directory.
 
 > "Roulette Wheel Selection mimics the way a traditional roulette wheel works by assigning each member of the population to a “slot” on the wheel, but “rigs” the odds by assigning more slots to those more desirable chromosomes."
 
-> - [John Svazic: Growing The Money Tree](http://growingthemoneytree.com/roulette-wheel-selection/)
+> via [John Svazic: Growing The Money Tree](http://growingthemoneytree.com/roulette-wheel-selection/)
 
 ## Usage
 
@@ -54,3 +54,18 @@ end
 While this may not be an extremely valuable use case, the example is used to demonstrate how simple it is to generate descriptive chromosomes for each item in your array by converting boolean operations into binary bits.
 
 When converting a binary number into an integer, the bits are weighted to the left, thus that a bit in the first position will raise the value of the integer higher than those to the right.
+
+## TODO
+
+* Tests.
+* Flesh out this README.
+* Flesh out edge cases.
+* Add ability to take less than the entire population.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
