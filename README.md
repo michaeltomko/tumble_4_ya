@@ -80,7 +80,6 @@ end
 
 ## TODO
 
-* Tests.
 * Flesh out this README.
 * Flesh out edge cases.
 * Add ability to take less than the entire population.
