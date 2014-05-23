@@ -3,6 +3,10 @@ Tumble4Ya
 
 A Ruby Gem that adds simple roulette wheel style sorting to any Array object.
 
+> ![Culture Club](http://24.media.tumblr.com/tumblr_mc0t7x0FAc1r3ifxzo1_500.gif)
+
+> I'll tumble 4 ya.
+
 ## Requirements
 
 Tumble4Ya requires Ruby 2.0+.
@@ -27,7 +31,7 @@ And run `bundle install` within your app's directory.
 
 ## Usage
 
-Simply call `tumble` on any Array and pass your weighted sorting criteria, as an array of bits, into the block.
+Simply call `tumble` on any Array and pass your weighted sorting criteria, as an array of bits, into the block. Failing to include a block will cause Tumble4Ya to simply act as an alias for the default `shuffle` method.
 
 ```ruby
 alcohol = ["beer","champagne"]
@@ -53,7 +57,7 @@ end
 
 While this may not be an extremely valuable use case, the example is used to demonstrate how simple it is to generate descriptive chromosomes for each item in your array by converting boolean operations into binary bits.
 
-When converting a binary number into an integer, the bits are weighted to the left, thus that a bit in the first position will raise the value of the integer higher than those to the right.
+When converting a binary number into an integer, the bits are weighted to the left, thus that a bit in the first position will raise the value of the integer higher than those to the right. The higher the value of the integer, or "fitness" in this case, will give those elements a higher probability of selection on each spin of the wheel.
 
 ## TODO
 
@@ -69,3 +73,5 @@ When converting a binary number into an integer, the bits are weighted to the le
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+> ![Culture Club](http://media.giphy.com/media/12ayoOAjHcjUaI/giphy.gif)
