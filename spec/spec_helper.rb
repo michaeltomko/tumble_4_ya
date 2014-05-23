@@ -1,2 +1,5 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'pry'
-require 'Tumble4Ya'
+require 'tumble_4_ya'
