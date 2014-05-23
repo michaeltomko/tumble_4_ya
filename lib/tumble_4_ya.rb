@@ -7,6 +7,12 @@ module Tumble4Ya
       perform_roulette_wheel_sort(*generate_fitnesses_and_load_roulette_wheel(items, &block))
     end
 
+    def score_items(&block)
+      items.collect do |item|
+        {:item => item, :score => score_item(item, &block)}
+      end
+    end
+
     private
     def perform_roulette_wheel_sort(items, wheel)
       roulette_wheel_as_generator(wheel).lazy.collect do |fitness|
@@ -24,9 +30,13 @@ module Tumble4Ya
 
     def generate_and_group_by_fitnesses(items, &block)
       items.shuffle.each_with_object({}) do |item,results|
-        fitness = calculate_fitness(((yield item).join.to_i(2) + 1),items.length)
+        fitness = calculate_fitness(score_item(item, &block).to_i(2),items.length)
         results[fitness] = (results[fitness].to_a << item)
       end
+    end
+
+    def score_item(item, &block)
+      (yield item).join
     end
 
     def calculate_fitness(binary,length)
@@ -50,5 +60,6 @@ module Tumble4Ya
         end
       end
     end
+
   end
 end
