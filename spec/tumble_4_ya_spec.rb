@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Tumble4Ya do
   let(:alcohol) {["beer","champagne"]}
   let(:drinks) {["juice","milk","beer","champagne"]}
+  let(:all_zeros) {[0,0,0,0,0,0,0]}
 
   def try_to_tumble
     @tumbled_array = drinks.tumble do |drink|
@@ -14,8 +15,18 @@ describe Tumble4Ya do
     end  
   end
 
-  it 'roulette wheel sorts an array' do
+  it 'should roulette wheel sort an array' do
     try_to_tumble
     expect(@tumbled_array).to be_a Array
   end
+
+  it 'should shuffle the array in the absence of a block' do
+    expect(drinks.tumble).to be_a Array
+    expect(alcohol.tumble).to be_a Array
+  end
+
+  it 'should handle cases where the array of bits is all zeros' do
+    expect(drinks.tumble{|drink| all_zeros }).to be_a Array
+  end
+  
 end
