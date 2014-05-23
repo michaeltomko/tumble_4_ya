@@ -47,12 +47,6 @@ drinks = ["juice","milk","beer","champagne"]
   ]
 end
 
-# Scoring
-=> juice:     [1,1,0,1]
-   milk:      [0,0,0,1]
-   beer:      [0,0,1,1]
-   champagne: [1,0,1,1]
-
 # Sorted Array
 => ["champagne", "juice", "beer", "milk"]
 ```
@@ -60,6 +54,29 @@ end
 While this may not be an extremely valuable use case, the example is used to demonstrate how simple it is to generate descriptive chromosomes for each item in your array by converting boolean operations into binary bits.
 
 When converting a binary number into an integer, the bits are weighted to the left, thus that a bit in the first position will raise the value of the integer higher than those to the right. The higher the value of the integer, or "fitness" in this case, will give those elements a higher probability of selection on each spin of the wheel.
+
+## Debugging
+
+Sometimes it can be useful to see how your criteria will actually score your array elements. Calling `Tumble4Ya::Tumbler.new(Array).score_items {|item| ... }` will output each item's score so that you can see how your conditional are performing.
+
+```ruby
+alcohol = ["beer","champagne"]
+drinks = ["juice","milk","beer","champagne"]
+
+Tumble4Ya::Tumbler.new(["juice","milk","beer","champagne"]).score_items do |drink|
+  [(drink.length > 4 ? 1 : 0),
+   (drink.match(/^j/) ? 1 : 0),
+   (alcohol.include?(drink) ? 1 : 0),
+   1
+  ]
+end
+
+# Output
+=> {:item => "juice", :score => "1101",
+    :item => "milk", :score => "0001",
+    :item => "beer", :score => "0011",
+    :item => "champagne, :score => "1011"}
+```
 
 ## TODO
 
