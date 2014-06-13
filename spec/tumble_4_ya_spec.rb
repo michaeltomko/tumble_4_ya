@@ -16,7 +16,7 @@ describe Tumble4Ya do
   end
 
   def try_to_score
-    @scored_array = Tumble4Ya::Tumbler.new(drinks).score_items do |drink|
+    @scored_array = Tumble4Ya::Tumbler.new(drinks, drinks.length).score_items do |drink|
       [(drink.length > 4 ? 1 : 0),
         (drink.match(/^j/) ? 1 : 0),
         (alcohol.include?(drink) ? 1 : 0),
@@ -47,6 +47,7 @@ describe Tumble4Ya do
 
   it 'should output the score as a string and the string should only contain 1s and 0s' do
     try_to_score
+    puts @scored_array
     expect(@scored_array.first[:score]).to be_a String
     expect(@scored_array.first[:score]).to match(/[01]+/)
   end

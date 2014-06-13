@@ -16,7 +16,7 @@ module Tumble4Ya
     end
 
     def score_items(&block)
-      items.map { |item| { item: item, score: score_item(item, &block) } }
+      @items.map { |item| { item: item, score: score_item(item, &block) } }
     end
 
     private
