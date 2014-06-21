@@ -1,25 +1,29 @@
 require 'spec_helper'
 
 describe Tumble4Ya do
-  let(:alcohol) {["beer","champagne"]}
-  let(:drinks) {["juice","milk","beer","champagne"]}
-  let(:all_zeros) {[0,0,0,0,0,0,0]}
+  let(:alcohol) { %w(beer champagne) }
+  let(:drinks) { %w(juice milk beer champagne) }
+  let(:all_zeros) { [0, 0, 0, 0, 0, 0, 0] }
 
   def try_to_tumble
     @tumbled_array = drinks.tumble do |drink|
-      [(drink.length > 4 ? 1 : 0),
+      [
+        -> { drink.length > 4 },
         (drink.match(/^j/) ? 1 : 0),
-        (alcohol.include?(drink) ? 1 : 0),
+        alcohol.include?(drink),
+        false,
         1
       ]
-    end  
+    end
   end
 
   def try_to_score
     @scored_array = drinks.score_items do |drink|
-      [(drink.length > 4 ? 1 : 0),
+      [
+        -> { drink.length > 4 },
         (drink.match(/^j/) ? 1 : 0),
-        (alcohol.include?(drink) ? 1 : 0),
+        alcohol.include?(drink),
+        false,
         1
       ]
     end
@@ -36,7 +40,7 @@ describe Tumble4Ya do
   end
 
   it 'should handle cases where the array of bits is all zeros' do
-    expect(drinks.tumble{|drink| all_zeros }).to be_a Array
+    expect(drinks.tumble { all_zeros }).to be_a Array
   end
 
   it 'should return scored items when .score_items is called' do
@@ -51,5 +55,5 @@ describe Tumble4Ya do
     expect(@scored_array.first[:score]).to be_a String
     expect(@scored_array.first[:score]).to match(/[01]+/)
   end
-  
+
 end
