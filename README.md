@@ -33,16 +33,19 @@ And run `bundle install` within your app's directory.
 
 ## Usage
 
-Simply call `tumble` on any Array and pass your weighted sorting criteria, as an array of bits, into the block. Failing to include a block will cause Tumble4Ya to simply act as an alias for the default `shuffle` method.
+Simply call `tumble` on any Array and pass your weighted sorting criteria into the block. Failing to include a block will cause Tumble4Ya to simply act as an alias for the default `shuffle` method.
+
+You can provide your criteria by constructing an Array of **Boolean (true or false)** and/or **Binary (1 or 0)** values inside of the block, like so…
 
 ```ruby
 alcohol = ["beer","champagne"]
 drinks = ["juice","milk","beer","champagne"]
 
 ["juice","milk","beer","champagne"].tumble do |drink|
-  [(drink.length > 4 ? 1 : 0),
+  [->(drink) { drink.length > 4 },
    (drink.match(/^j/) ? 1 : 0),
-   (alcohol.include?(drink) ? 1 : 0),
+   alcohol.include?(drink),
+   false,
    1
   ]
 end
@@ -51,38 +54,42 @@ end
 => ["champagne", "juice", "beer", "milk"]
 ```
 
+Tumble4Ya will loop over any Array of Procs, conditionals, 1's and 0's, and TrueClass/FalseClass values.
+
+You can also choose to take just the top N items by passing an **amount** attribute to `tumble`…
+
+```ruby
+alcohol = ["beer","champagne"]
+drinks = ["juice","milk","beer","champagne"]
+
+["juice","milk","beer","champagne"].tumble(2) do |drink|
+  [->(drink) { drink.length > 4 },
+   (drink.match(/^j/) ? 1 : 0),
+   alcohol.include?(drink),
+   false,
+   1
+  ]
+end
+
+# Sorted Array
+=> ["champagne", "juice"]
+```
+
 While this may not be an extremely valuable use case, the example is used to demonstrate how simple it is to generate descriptive chromosomes for each item in your array by converting boolean operations into binary bits.
 
 When converting a binary number into an integer, the bits are weighted to the left, thus that a bit in the first position will raise the value of the integer higher than those to the right. The higher the value of the integer, or "fitness" in this case, will give those elements a higher probability of selection on each spin of the wheel.
 
 ## Debugging
 
-Sometimes it can be useful to see how your criteria will actually score your array elements. Calling `Tumble4Ya::Tumbler.new(Array).score_items {|item| ... }` will output each item's score so that you can see how your conditional are performing.
+Sometimes it can be useful to see how your criteria will actually score your array elements. Calling `Tumble4Ya::Tumbler.new(Array).score_items {|item| ... }` will output each item's score so that you can see how your criteria are performing.
 
 ```ruby
-alcohol = ["beer","champagne"]
-drinks = ["juice","milk","beer","champagne"]
-
-Tumble4Ya::Tumbler.new(["juice","milk","beer","champagne"]).score_items do |drink|
-  [(drink.length > 4 ? 1 : 0),
-   (drink.match(/^j/) ? 1 : 0),
-   (alcohol.include?(drink) ? 1 : 0),
-   1
-  ]
-end
-
-# Output
-=> {:item => "juice", :score => "1101",
-    :item => "milk", :score => "0001",
-    :item => "beer", :score => "0011",
-    :item => "champagne, :score => "1011"}
+# Output based on the criteria from the first example.
+=> {:item => "juice", :score => "11001",
+    :item => "milk", :score => "00001",
+    :item => "beer", :score => "00101",
+    :item => "champagne, :score => "10101"}
 ```
-
-## TODO
-
-* Flesh out this README.
-* Flesh out edge cases.
-* Add ability to take less than the entire population.
 
 ## Contributing
 
