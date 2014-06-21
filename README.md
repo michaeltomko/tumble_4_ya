@@ -84,11 +84,11 @@ When converting a binary number into an integer, the bits are weighted to the le
 Sometimes it can be useful to see how your criteria will actually score your array elements. Calling `Tumble4Ya::Tumbler.new(Array).score_items {|item| ... }` will output each item's score so that you can see how your criteria are performing.
 
 ```ruby
-# Output
-=> {:item => "juice", :score => "1101",
-    :item => "milk", :score => "0001",
-    :item => "beer", :score => "0011",
-    :item => "champagne, :score => "1011"}
+# Output based on the criteria from the first example.
+=> {:item => "juice", :score => "11001",
+    :item => "milk", :score => "00001",
+    :item => "beer", :score => "00101",
+    :item => "champagne, :score => "10101"}
 ```
 
 ## Contributing
