@@ -38,15 +38,16 @@ Simply call `tumble` on any Array and pass your weighted sorting criteria into t
 You can provide your criteria by constructing an Array of **Boolean (true or false)** and/or **Binary (1 or 0)** values inside of the block, like so…
 
 ```ruby
-alcohol = ["beer","champagne"]
-drinks = ["juice","milk","beer","champagne"]
+alcohol = ["beer", "champagne"]
+drinks = ["juice", "milk", "beer", "champagne"]
 
-["juice","milk","beer","champagne"].tumble do |drink|
-  [->(drink) { drink.length > 4 },
-   (drink.match(/^j/) ? 1 : 0),
-   alcohol.include?(drink),
-   false,
-   1
+drinks.tumble do |drink|
+  [
+    -> { drink.length > 4 },
+    (drink.match(/^j/) ? 1 : 0),
+    alcohol.include?(drink),
+    false,
+    1
   ]
 end
 
@@ -59,15 +60,16 @@ Tumble4Ya will loop over any Array of Procs, conditionals, 1's and 0's, and True
 You can also choose to take just the top N items by passing an **amount** attribute to `tumble`…
 
 ```ruby
-alcohol = ["beer","champagne"]
-drinks = ["juice","milk","beer","champagne"]
+alcohol = ["beer", "champagne"]
+drinks = ["juice", "milk", "beer", "champagne"]
 
-["juice","milk","beer","champagne"].tumble(2) do |drink|
-  [->(drink) { drink.length > 4 },
-   (drink.match(/^j/) ? 1 : 0),
-   alcohol.include?(drink),
-   false,
-   1
+drinks.tumble(2) do |drink|
+  [
+    -> { drink.length > 4 },
+    (drink.match(/^j/) ? 1 : 0),
+    alcohol.include?(drink),
+    false,
+    1
   ]
 end
 
@@ -85,10 +87,12 @@ Sometimes it can be useful to see how your criteria will actually score your arr
 
 ```ruby
 # Output based on the criteria from the first example.
-=> {:item => "juice", :score => "11001",
+=> {
+    :item => "juice", :score => "11001",
     :item => "milk", :score => "00001",
     :item => "beer", :score => "00101",
-    :item => "champagne, :score => "10101"}
+    :item => "champagne, :score => "10101"
+   }
 ```
 
 ## Contributing
