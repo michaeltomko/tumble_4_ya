@@ -88,10 +88,10 @@ Sometimes it can be useful to see how your criteria will actually score your arr
 ```ruby
 # Output based on the criteria from the first example.
 => {
-    :item => "juice", :score => "11001",
-    :item => "milk", :score => "00001",
-    :item => "beer", :score => "00101",
-    :item => "champagne, :score => "10101"
+    item: "juice", score: "11001",
+    item: "milk",  score: "00001",
+    item: "beer", score: "00101",
+    item: "champagne, score: "10101"
    }
 ```
 
