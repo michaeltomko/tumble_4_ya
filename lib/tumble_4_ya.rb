@@ -56,6 +56,7 @@ module Tumble4Ya
       end.join
     end
 
+    # Purposefully leaving off the -0.25 as called for by the classic formula due to it causing an error in both Ruby and JS.
     def calculate_fitness(binary, length)
       ((0.25 * (binary * binary)) + (2 * binary) + length).floor
     end
