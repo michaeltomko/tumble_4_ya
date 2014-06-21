@@ -6,18 +6,18 @@ module Tumble4Ya
   # Tumbler class institutes the roulette wheel genetic algorithm.
   module Tumbler
     # Perform Roulette Wheel Sort on chained array using block as selection criteria.
-    def tumble(amount = self.length, &block)
+    def tumble(amount = length, &block)
       if block_given?
         @amount = amount
         perform_sort(*generate_fitnesses_and_load_roulette_wheel(self, &block))
       else
-        self.shuffle
+        shuffle
       end
     end
 
     # Return a hash of scored items. Useful for debugging.
     def score_items(&block)
-      self.map { |item| { item: item, score: score_item(item, &block) } }
+      map { |item| { item: item, score: score_item(item, &block) } }
     end
 
     protected
@@ -64,4 +64,4 @@ module Tumble4Ya
 
   # Adds `tumble` and `score_items` methods to Arrays.
   Array.send :include, Tumbler
-end 
+end
