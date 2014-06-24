@@ -84,15 +84,6 @@ describe Tumble4Ya do
     not_match.should > match
   end
 
-  it 'should accept any number of criteria' do
-    random = Random.rand(100)
-    sorted_array = drinks.tumble do
-      random.times.map { criteria.sample }
-    end
-    sorted_array.should_not == drinks
-  end
-  
-
   it 'should handle cases where the array of bits is all zeros' do
     expect(drinks.tumble { all_zeros }).to be_a Array
   end
