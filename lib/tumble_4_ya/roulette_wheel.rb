@@ -25,7 +25,7 @@ module Tumble4Ya
     # Creates a 100 item array comprised of proportionate samples of each fitness.
     def populate_wheel(fitnesses)
       fitnesses.each_with_object([]) do |fitness, obj|
-        ((fitness.to_f / sum.to_f) * 100).round.times do
+        ((fitness.to_f / sum.to_f) * 100.0).round.times do
           obj << fitness
         end
       end
