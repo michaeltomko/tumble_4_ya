@@ -20,7 +20,7 @@ module Tumble4Ya
       end
     end
 
-    private
+    protected
 
     # Creates a 100 item array comprised of proportionate samples of each fitness.
     def populate_wheel(fitnesses)
