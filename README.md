@@ -83,7 +83,7 @@ When converting a binary number into an integer, the bits are weighted to the le
 
 ## Debugging
 
-Sometimes it can be useful to see how your criteria will actually score your array elements. Calling `Tumble4Ya::Tumbler.new(Array).score_items {|item| ... }` will output each item's score so that you can see how your criteria are performing.
+Sometimes it can be useful to see how your criteria will actually score your array elements. Calling `score_items` on an Array, and passing to it a block, will output each item's score so that you can see how your criteria are performing.
 
 ```ruby
 # Output based on the criteria from the first example.
