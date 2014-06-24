@@ -12,7 +12,7 @@ describe Tumble4Ya::RouletteWheel do
     @roulette_wheel.sum.should == fitnesses.sum
   end
 
-  it 'should generate a 100-item array made up proportionately of the fitnesses fed to it on initialization' do
+  it 'should generate a ~100-item array made up proportionately of the fitnesses fed to it on initialization' do
     roulette_wheel(fitnesses)
     @roulette_wheel.wheel.length.should <= 101
   end
