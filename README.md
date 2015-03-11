@@ -15,13 +15,19 @@ Tumble4Ya requires Ruby 2.0+.
 
 ## Installation
 
-Add Tumble4Ya to your Gemfile:
+Add Tumble4Ya to your Gemfile…
 
 ```ruby
 gem 'tumble_4_ya', :git => "https://github.com/michaeltomko/tumble_4_ya.git", :branch => "master" 
 ```
 
-And run `bundle install` within your app's directory.
+…and run `bundle install` within your app's directory.
+
+## Purpose
+
+Tumble4Ya is a Ruby implementation of the sorting algorithm from my now-defunct Spotify application, [Rock Tumbler](https://github.com/michaeltomko/rock-tumbler), which was originally written in JavaScript, with some help from the [Lazy.js](http://danieltao.com/lazy.js/) library — which I spoke about at the [March 20, 2014 meeting of the St. Louis JavaScript group](https://www.youtube.com/watch?v=GDOeQ2n3GzI). *(For the record, Rock Tumbler is only defunct because Spotify has abandoned their developer program. I used that application for nearly 8 hours a day for at least a year and I continue to miss it every day. Their web API does not expose enough of what I need to reuse Rock Tumbler, although I have considered different reinterpretations of it to revive at least some of its best core functions.)*
+
+I found myself constantly dissatisfied with the results of using Ruby's built-in `.shuffle` method but overwhelmed at the overhead of trying to implement a more complicated sorting algorithm into the general flow of my application — especially when the "need" may not warrant such an undertaking. The use case that initially caused me to write this gem is outlined below but Tumble4Ya is my attempt at porting the raw power of a Roulette Wheel Sorting Algorithm into a simple, chainable method that can be applied to any Array.
 
 ## Roulette Wheel Sorting
 
@@ -33,7 +39,7 @@ And run `bundle install` within your app's directory.
 
 ## Usage
 
-Simply call `tumble` on any Array and pass your weighted sorting criteria into the block. Failing to include a block will cause Tumble4Ya to simply act as an alias for the default `shuffle` method.
+Simply call `.tumble` on any Array and pass your weighted sorting criteria into the block. Failing to include a block will cause Tumble4Ya to simply act as an alias for the default `.shuffle` method.
 
 You can provide your criteria by constructing an Array of **Boolean (true or false)** and/or **Binary (1 or 0)** values inside of the block, like so…
 
@@ -83,7 +89,7 @@ When converting a binary number into an integer, the bits are weighted to the le
 
 ## Debugging
 
-Sometimes it can be useful to see how your criteria will actually score your array elements. Calling `score_items` on an Array, and passing to it a block, will output each item's score so that you can see how your criteria are performing.
+Sometimes it can be useful to see how your criteria will actually score your array elements. Calling `.score_items` on an Array, and passing to it a block, will output each item's score so that you can see how your criteria are performing.
 
 ```ruby
 # Output based on the criteria from the first example.
