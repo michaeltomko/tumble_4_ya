@@ -68,12 +68,18 @@ end
 
 Weighting of the criteria is organized left (greatest) to right (least). From left to right, the criteria for this sort are as follows…
 
-* The scored sentiment of this message comprises greater than or equal to 50% of the overall sentiment breakdown of messages. *(ex. The message is scored as "positive" and more than 50% of all of the messages are positive.)*
+* The scored sentiment of this message comprises greater than or equal to 50% of the overall sentiment breakdown of messages.
+  * ex. The message is scored as "positive" and more than 50% of all of the messages are positive — the sentiment majority.
 * The scored sentiment of this message comprises less than or equal to 20% of the overall sentiment breakdown of messages.
+  * ex. The message is scored as "negative" and less than 20% of all of the messages are negative — the sentiment minority. 
 * The text of this message contains at least one hashtag.
-* The source of this message (Twitter, Facebook, etc.) comprises 50% or greater of the overall source breakdwon of messages.
+  * ex. "Bob is a cool dude. #RadBob"
+* The source of this message (Twitter, Facebook, etc.) comprises 50% or greater of the overall source breakdown of messages.
+  * ex. The message is a Tweet and Twitter comprises the majority of displayed posts.
 * The content length of this message is less than or equal to 300 characters.
+  * ex. Long blog snippets or relatively common Facebook status updates.
 * The type of this message (photo or text) comprises less than or equal to 50% of the overall type breakdown of messages.
+  * i.e. Instagram and Tumblr posts are primarily photo posts whereas Twitter, Facebook, and blog posts are text. 
 * A control bit, so that no message is scored as a zero.
 
 Playing with these values allowed me to quickly concoct an algorithm for sorting these social media posts in a way that was visually both random and balanced, with different types, sources, sentiments, and lengths more evenly distributed throughout the grid.
